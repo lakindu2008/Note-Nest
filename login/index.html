@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="../index.html">
+        <svg class="svg1" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg>
+    </a>
+
+    <div class="deatail">
+        <h2 class="text2">Note Nest ,</h2>
+        <p class="p1">Are you tired of juggling multiple notebooks, sticky notes, and digital documents? Say hello to Note Nest, your ultimate solution for seamless note-taking and organization. Whether you're a student, professional, or creative thinker, NoteMaster is designed to cater to all your note-taking needs.</p>
+        <a href="https://github.com/lakindu2008/Note-Nest">
+            <button class="btn2">About Developer</button>
+        </a> 
+    </div>
+    <div class="login-box">
+        <img src="../src/WayFare.jpg" class="img1">
+        <h1 class="txt1">Note Nest</h1>
+        <div class="names">
+            <input type="text" placeholder="First Name" id="username" value="" class="input1">
+            <input type="text" placeholder="Last Name" id="lastname" value="" class="input1">
+        </div>
+        <input type="email" placeholder="Enter Your Email" value="" id="email"><br>
+        <input type="password" placeholder="Create New Password" value="" id="password"><br>
+        <input type="submit" value="Login Now" id="submit">
+
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+     
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCVzVwvD36zkIOdMzlncdT9YtU7bc8ie3w",
+          authDomain: "note-nest-bfa15.firebaseapp.com",
+          projectId: "note-nest-bfa15",
+          storageBucket: "note-nest-bfa15.firebasestorage.app",
+          messagingSenderId: "125423815583",
+          appId: "1:125423815583:web:c006be8694119f0a17cbaa"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        //get database Services
+        const db = getDatabase(app);
+        document.getElementById("submit").addEventListener('click', function(e){
+            e.preventDefault();
+            set(ref(db, 'user/' + document.getElementById("username").value),{
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                Password: document.getElementById("password").value
+            });
+            alert("Login Succsess");
+        })
+      </script>
+</body>
+</html>
